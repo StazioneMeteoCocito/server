@@ -1,4 +1,5 @@
 $(".progress-line").hide();
+$("#custom").hide();
 var intent = "",
     datatype = "",
     when = "";
@@ -50,11 +51,11 @@ $(".dt").click(function () {
 
         $("#when").hide();
     }
-    sView();
+   sView();
 });
-
+var busyCustom = true;
 function sView() {
-    if (typeof when == 'undefined' || !when || typeof intent == 'undefined' || !intent || typeof datatype == 'undefined' || !datatype) return false;
+    if (typeof when == 'undefined' || !when || typeof intent == 'undefined' || !intent || typeof datatype == 'undefined' || !datatype || busyCustom) return false;
     if (intent == "activity") return false;
     $(".progress-line").show();
     $.get("data.php", {
@@ -73,7 +74,7 @@ function sView() {
             }
             $(".progress-line").hide();
 
-            if (when == "weekly" || when == "weeklyprev" || when == "thismonth" || when == "prevmonth") {
+            if (when == "weekly" || when == "weeklyprev" || when == "thismonth" || when == "prevmonth" || when.startsWith("custom|week")  || when.startsWith("custom|month")) {
                 if (intent == "datas") tableDisplay(data);
                 else weekDisplay(data);
             } else {
@@ -84,10 +85,102 @@ function sView() {
         });
 }
 $(".td").click(function () {
-    when = $(this).attr("data-when");
-    sView();
+     if($(this).attr("data-when")=="custom"){
+        $("#custom").show();
+        $("#plottingArea").hide();
+        busyCustom = true;
+    }
+    else{
+        $("#plottingArea").show();
+        $("#custom").hide();
+        when = $(this).attr("data-when");
+        busyCustom = false;
+        sView();
+    }
 
 });
 setInterval(function () {
     sView();
 }, 30 * 1000);
+
+
+for(var i=2010;i<2100;i++){
+	$("#cYearInput").append('<option '+((new Date()).getFullYear()==i?"selected":"")+' value="'+i+'">'+i+'</option>');
+}
+
+$('select[name=customSel]').on('change', function() {
+  selectiveChoiceinputs();
+});
+
+function weekCount(year, month_number) {
+
+    var firstOfMonth = new Date(year, month_number-1, 1);
+    var lastOfMonth = new Date(year, month_number, 0);
+
+    var used = firstOfMonth.getDay() + lastOfMonth.getDate();
+
+    return Math.ceil( used / 7);
+}
+
+function selectiveChoiceinputs(){
+$("#cDateInpuy").val("");
+$("#cWeekInput").val("1");
+$("#cMonthInput").val("1");
+$("#cYearInput").val((new Date()).getFullYear());
+switch($('select[name=customSel]').val()){
+    case "day":
+        $("#cDateInpuy").show();
+        $("#cWeekInput").hide();
+        $("#cMonthInput").hide();
+        $("#cYearInput").hide();
+        break;
+    case "week":
+        $("#cDateInpuy").hide();
+        $("#cWeekInput").show();
+        $("#cMonthInput").show();
+        $("#cYearInput").show();
+        break;
+    case "month":
+        $("#cDateInpuy").hide();
+        $("#cWeekInput").hide();
+        $("#cMonthInput").show();
+        $("#cYearInput").show();
+        break;
+  }
+}
+selectiveChoiceinputs();
+
+function updateWCountInput(){
+    let nWeeks = weekCount($("#cYearInput").val(), $("#cMonthInput").val());
+    $("#cWeekInput").html("");
+    for(let i=0;i<nWeeks;i++){
+         $("#cWeekInput").append('<option '+(i==0?"selected":"")+' value="'+(i+1)+'">Settimana '+(i+1)+'</option>');
+        }
+}
+updateWCountInput();
+
+$('#cMonthInput,#cYearInput').on('change', function() {
+    updateWCountInput();
+});
+
+
+$("#sendCustom").click(function(){
+    let frame = $('select[name=customSel]').val();
+    let final = "custom|"+frame+"|";
+    switch(frame){
+        case "day":
+            final+=$("#cDateInpuy").val();
+        break;
+        case "week":
+            final+=$("#cWeekInput").val()+"|"+$("#cMonthInput").val()+"|"+$("#cYearInput").val();
+        break;
+        case "month":
+            final+=$("#cMonthInput").val()+"|"+$("#cYearInput").val();
+        break;
+    }
+    $("#custom").hide();
+    $("#plottingArea").show();
+    busyCustom = false;
+    when=final;
+    sView();
+});
