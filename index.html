@@ -95,14 +95,17 @@
                 <a href="#plot" id="graphics" class="mainB w3-bar-item w3-button w3-mobile"
                     data-dropdown="yes">Grafici</a>
                 <a href="#plot" id="datas" class="mainB w3-bar-item w3-button w3-mobile" data-dropdown="yes">Dati</a>
-                <a href="https://github.com/MatMasIt/weatherStation/raw/main/documents/ws.pdf"
+                <a href="https://github.com/StazioneMeteoCocito/documents"
                     class="mainB w3-bar-item w3-button w3-mobile" target="_blank">Informazioni sul progetto</a>
                 <a href="https://github.com/StazioneMeteoCocito/dati"
                     class="mainB w3-bar-item w3-button w3-mobile">Archivio</a>
-                <a href="https://github.com/MatMasIt/weatherStation" class="mainB w3-bar-item w3-button w3-mobile">Open
+                <a href="https://github.com/StazioneMeteoCocito" class="mainB w3-bar-item w3-button w3-mobile">Open
                     Source</a>
 
                 <a id="activity" class="mainB w3-bar-item w3-button w3-mobile">Attività</a>
+                
+                <a href="https://t.me/StazioneMeteoCocitoBot" class="w3-blue w3-bar-item w3-button w3-mobile"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" style="width:20px;"> Bot Telegram</a>
+
 
             </div>
             <div class="w3-bar" id="datatype">
@@ -122,6 +125,7 @@
                     precedente</a>
                 <a href="#plot" class="w3-bar-item w3-button w3-mobile td" data-when="thismonth">Questo mese</a>
                 <a href="#plot" class="w3-bar-item w3-button w3-mobile td" data-when="prevmonth">Lo scorso mese</a>
+                <a href="#plot" class="w3-bar-item w3-button w3-mobile td" data-when="custom">Personalizzato</a>
             </div>
 
         </div>
@@ -139,6 +143,46 @@
             <div id="actTab">
                 <div id="calendar_basic" style="width: 1000px;height: 350px;"></div>
             </div>
+            
+        <form class="w3-panel w3-white w3-card w3-display-container" id="custom">
+            <h3>Selezione personalizzata</h3>
+              <div class="w3-row-padding">
+          <div class="w3-half">
+               <select class="w3-select" name="customSel">
+              <option value="day" selected>Giorno</option>
+              <option value="week">Settimana</option>
+              <option value="month">Mese</option>
+            </select>
+          </div>
+          <div class="w3-half">
+             <input id="cDateInpuy" type="date" class="customContainer w3-input w3-border">
+              <select class="w3-select" id="cWeekInput">
+                 <option value="1">Settimana 1</option> 
+                 <option value="2">Settimana 2</option> 
+                 <option value="3">Settimana 3</option> 
+                 <option value="4">Settimana 4</option> 
+              </select>
+              <select class="w3-select" id="cMonthInput">
+                 <option value="1">Gennaio</option> 
+                 <option value="2">Febbraio</option> 
+                 <option value="3">Marzo</option> 
+                 <option value="4">Aprile</option> 
+                 <option value="5">Maggio</option> 
+                 <option value="6">Giugno</option> 
+                 <option value="7">Luglio</option> 
+                 <option value="8">Agosto</option> 
+                 <option value="9">Settembre</option> 
+                 <option value="10">Ottobre</option> 
+                 <option value="11">Novembre</option> 
+                 <option value="12">Dicembre</option> 
+              </select>
+              <select class="w3-select" id="cYearInput">
+              </select>
+          </div>
+          <button type="button" id="sendCustom" class="w3-btn w3-right w3-teal">Vai</button>
+        </div>
+        
+        </form>
             <div id="plottingArea">
                 <p class="w3-opacity"><b id="plottingTitle"></b></p>
                 <div class="w3-panel w3-white w3-card w3-display-container">
