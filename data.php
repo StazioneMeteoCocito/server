@@ -53,6 +53,44 @@ switch ($_GET["when"]) {
         }
         $final["periodName"] = "Dati del mese precedente";
         break;
+    default:
+        /**
+         * examples
+         * custom|week|1|1|2022 
+            custom|week|1|1|2022 
+            custom|day| 
+            custom|day|0001-01-01 
+            custom|month|1|2022 
+            custom|month|1|2022
+         */
+        $e = explode("|",$_GET["when"]);
+        $months = ["Gennaio", "Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre"];
+            
+        switch($e[1]){
+        case "week":
+             $final = get_weekly($e[2], $e[3], $e[4], $_GET["dataType"]);
+            $final["periodName"] =  "Dati della ".$e[2]."° settimana di ".$months[$e[3]]." ".$year;
+            break;
+        case "month":
+            $month=$e[2];
+            $year = $e[3];
+              $nWeeks = weeks_in_month($month, $year);
+            $final["data"] = [];
+            $final["days"] = [];
+            for ($i = 1; $i < $nWeeks; $i++) {
+                $w = get_weekly($i, $month, $year, $_GET["dataType"], $month);
+                if ($w["data"] != null && count($w["data"])) $final["data"] = array_merge($final["data"], $w["data"]);
+                if ($w["days"] != null && count($w["days"])) $final["days"] = array_merge($final["days"], $w["days"]);;
+            }
+           $final["periodName"] = "Dati di ".$months[$month-1]." ".$year;
+            break;
+        case "day":
+             $ds=explode("-",$e[2]);//y m d
+             $final["data"] = get_daily($ds[2], $ds[1], $ds[0], $_GET["dataType"]);
+            $final["periodName"] = "Dati del ".($ds[2]?:date("d"))."/".($ds[1]?:date("m"))."/".($ds[0]?:date("Y"));
+            break;
+        }
+        break;
 }
 
 $final["stats"] = get_stats($final["data"]);
