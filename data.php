@@ -64,7 +64,7 @@ switch ($_GET["when"]) {
             custom|month|1|2022
          */
         $e = explode("|",$_GET["when"]);
-        $months = ["Gennaio", "Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre"];
+        $months = ["Gennaio", "Febbraio","Marzo","Aprile","Maggio","Giugno","Luglio","Agosto","Settembre","Ottobre","Novembre","Dicembre"];
             
         switch($e[1]){
         case "week":
