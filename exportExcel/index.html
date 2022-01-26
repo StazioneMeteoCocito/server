@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stazione Meteo Permanente del Liceo Scientifico Statale "Leonardo Cocito"</title>
+    <meta charset="UTF-8">
+    <!-- Primary Meta Tags -->
+    <title>Stazione Meteo Permanente del Liceo Scientifico Statale "Leonardo Cocito"</title>
+    <meta name="title" content="Stazione Meteo Permanente del Liceo Scientifico Statale Leonardo Cocito">
+    <meta name="description" content="Questa pagina contiene dati, grafici e statistiche raccolte dalla Stazione Meteo Permanente del Liceo Scientifico Statale 
+        Leonardo Cocito">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://liceococito.edu.it/meteo/">
+    <meta property="og:title" content="Stazione Meteo Permanente del Liceo Scientifico Statale Leonardo Cocito">
+    <meta property="og:description" content="Questa pagina contiene dati, grafici e statistiche raccolte dalla Stazione Meteo Permanente del Liceo Scientifico Statale 
+        Leonardo Cocito">
+    <meta property="og:image" content="https://liceococito.edu.it/meteo/logoLiceo.gif">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://liceococito.edu.it/meteo/">
+    <meta property="twitter:title" content="Stazione Meteo Permanente del Liceo Scientifico Statale Leonardo Cocito">
+    <meta property="twitter:description" content="Questa pagina contiene dati, grafici e statistiche raccolte dalla Stazione Meteo Permanente del Liceo Scientifico Statale
+        Leonardo Cocito">
+    <meta property="twitter:image" content="https://liceococito.edu.it/meteo/logoLiceo.gif">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org/",
+    "@type": "WebSite",
+    "name": "Stazione Meteo Permanente del Liceo Scientifico Statale Leonardo Cocito",
+    "url": "https://www.liceococito.edu.it/meteo/"
+    }
+    </script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-blue-grey.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body class="w3-theme-l4">
+
+    <div style="min-width:400px">
+
+        <div class="w3-bar w3-large w3-theme-d4">
+
+            <span class="w3-bar-item">
+                <h1>Stazione Meteo Permanente del Liceo Scientifico Statale "Leonardo Cocito"</h1>
+                <hr />
+                <p>Esportazione in <i>Excel</i></p>    
+            </span>
+
+            <div class="w3-bar w3-black">
+                <a href="../" id="graphics" class="mainB w3-bar-item w3-button w3-mobile"
+                    data-dropdown="yes">Home</a>
+
+
+            </div>
+         
+
+        </div>
+        <div class="progress-line"></div>
+        <div class="w3-container w3-content" id="landing">
+            <div class="w3-panel w3-white w3-card w3-display-container">
+                <p>Il progetto "Stazione meteo" raccoglie dati dalla stazione Meteo Permanente del Liceo Scientifico
+                    Leonardo Cocito</p>
+            </div>
+        </div>
+
+
+
+        <div class="w3-container w3-content">
+        <form class="w3-panel w3-white w3-card w3-display-container" id="sform">
+            <h3>Espotrazione personalizzata</h3>
+              <div class="w3-row-padding">
+          <div class="w3-half">
+              <label for="start">Data di Inizio</label>
+              <input type="date" name="start" class=" w3-input w3-border" id="start" required>
+              <br />
+              <label for="end">Data di Fine</label>
+              <input type="date" name="end" id="end" class="w3-input w3-border" required>
+              <br />
+              <label for="selHm">Livello di definizione</label>
+              <select id="selHm" name="definition" class="w3-select">
+                  <option value="0">Tutte le rilevazioni</option>
+                  <option value="15">Ogni 15 minuti</option>
+                  <option value="30">Ogni 30 minuti</option>
+                  <option value="1">Ogni ora</option>
+                  <option value="3">Ogni 3 ore</option>
+                  <option value="5">Ogni 5 ore</option>
+              </select>
+       <br />
+              <label for="eS">Tipoogia di File</label>
+              <select id="eS" name="export" class="w3-select">
+                  <option value="xlsx">XLSX - Excel</option>
+                  <option value="ods">ODS - OpenDocument/Libreoffice</option>
+              </select>
+          </div>
+          <div class="w3-half">
+             <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="T">
+          <label>Temperatura</label>
+          </p>
+           <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="H">
+          <label>Umidità</label>
+          </p>
+           <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="P">
+          <label>Pressione</label>
+          </p>
+           <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="PM10">
+          <label>PM10</label>
+          </p>
+           <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="PM25">
+          <label>PM2,5</label>
+          </p>
+           <p>
+          <input class="w3-check" type="checkbox" checked="checked" name="S">
+          <label>Fumo e vapori infiammabili</label>
+          </p>
+          </div>
+          <button type="submit" class="w3-btn w3-right w3-teal">Esporta</button>
+        </div>
+        
+        </form>
+          
+
+        </div>
+        <footer class="w3-container w3-teal">
+            <p>&copy; 2022, Mattia Mascarello, Lorenzo Dellapiana, Luca Savio Biello</p>
+        </footer>
+<script src="main.js"></script>
+</body>
+
+</html>
