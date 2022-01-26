@@ -2,6 +2,7 @@
 require("rlib.php");
 //Set the Content Type
 header('Content-type: image/jpeg');
+
 function nformat($n){
     return number_format($n,2,",","'");
 }
