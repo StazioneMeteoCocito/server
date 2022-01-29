@@ -41,7 +41,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/style.css">
-    <link rel="stylesheet" href="assets/footer.css">
+    
 </head>
 
 <body class="w3-theme-l4">
@@ -142,7 +142,14 @@
 
         <div class="w3-container w3-content">
             <div id="actTab">
-                <div id="calendar_basic" style="width: 1000px;height: 350px;"></div>
+                <p class="w3-opacity"><b>Rapporto tecnico</b></p>
+                <div class="w3-panel w3-white w3-card w3-display-container">
+                    <pre id="reptech"></pre>
+                </div>
+                <p class="w3-opacity"><b>Statistiche delle rilevazioni</b></p>
+                <div class="w3-panel w3-white w3-card w3-display-container">
+                    <div id="calendar_basic" style="width: 1000px;height: 350px;"></div>
+                </div>
             </div>
             
         <form class="w3-panel w3-white w3-card w3-display-container" id="custom">
@@ -217,7 +224,7 @@
                         </tr>
                     </table>
                 </div>
-
+                </div>
 
             </div>
 

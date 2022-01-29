@@ -68,6 +68,7 @@ function tabDraw() {
 
         chart.draw(dataTable, options);
     });
+     $.get("data/report.txt").done(function (data) {$("#reptech").html(data); });
 }
 
 function tableDisplay(result) {
@@ -168,3 +169,4 @@ function weekDisplay(result) {
 $("#datatype").hide();
 $("#when").hide();
 $("#plottingArea").hide();
+$("#actTab").hide();

@@ -102,3 +102,12 @@
     padding-top: 16px;
     text-align: center;
 }
+
+pre {
+    white-space: pre-wrap;
+}
+
+#calendar_basic{
+     overflow:scroll;
+
+}

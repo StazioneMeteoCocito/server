@@ -41,6 +41,8 @@ imagettftext($img,20,0,20,300,$green,$font_path,"Pressione:\n ".nformat($dataL["
 
 imagettftext($img,20,0,20,380,$pm10,$font_path,"PM10:\n ".nformat($dataL["PM10"])." mug/m3");
 // Send Image to Browser
+
+
 imagejpeg($img);
 
 // Clear Memory
