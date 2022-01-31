@@ -33,13 +33,23 @@ imagettftext($img,15,0,20,85,$black,$font_path,"Ultimo aggiornamento:\n ".date("
 
 imagettftext($img, 20,0,20,140,$red,$font_path,"Temperatura:\n ".nformat($dataL["T"])." C");
 
-imagettftext($img,20,0,20,220,$blue,$font_path,"Umidita':\n ".nformat($dataL["H"])." %");
+imageline($img,105,200,100,195,$blue); // accent on Umidità
+
+imagettftext($img,20,0,20,220,$blue,$font_path,"Umidita:\n ".nformat($dataL["H"])." %");
 
 
 imagettftext($img,20,0,20,300,$green,$font_path,"Pressione:\n ".nformat($dataL["P"])." hPa");
 
 
-imagettftext($img,20,0,20,380,$pm10,$font_path,"PM10:\n ".nformat($dataL["PM10"])." mug/m3");
+imagettftext($img,20,0,20,370,$pm10,$font_path,"PM10:\n ".nformat($dataL["PM10"]));
+
+list($w,$h) = getimagesize("umg.jpg");
+$unit = imagecreatefromjpeg("umg.jpg");
+
+if($dataL["PM10"]<100) $left = 90;
+else $left=110;
+imagecopyresized($img,$unit,$left,375,0,0,$w*0.45,$h*0.45,$w,$h);
+
 // Send Image to Browser
 
 
