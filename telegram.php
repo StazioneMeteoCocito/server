@@ -163,7 +163,7 @@ case "/questomese":
            timestats($DATA,"prevmonth");
       break;
     case "/badge":
-    API("sendPhoto", ["chat_id" => $DATA["message"]["chat"]["id"], "photo" => "https://liceococito.edu.it/meteo/wwidget.php?int=" . random_int(0, 10000), "reply_to_message_id" => $DATA["message"]["message_id"]]);
+    API("sendPhoto", ["chat_id" => $DATA["message"]["chat"]["id"], "photo" => "https://raw.githubusercontent.com/StazioneMeteoCocito/instagramGrapher/main/day.jpg?" . random_int(0, 10000), "reply_to_message_id" => $DATA["message"]["message_id"]]);
         
     break;
         default:
