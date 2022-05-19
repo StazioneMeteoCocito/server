@@ -101,7 +101,7 @@ function n($n){
 function API($method, $data)
 {
     $ch = curl_init();
-    $botT="5281846119:AAFrIE24nC48Tf8nV_TKA8OrwqtG5MKk0v4";
+    $botT="TOKEN";
     curl_setopt($ch, CURLOPT_URL, "https://api.telegram.org/bot".$botT."/" . $method);
     curl_setopt($ch, CURLOPT_POST, 1);
 
