@@ -72,7 +72,7 @@
                   <source src="../data/bulletin.mp3" type="audio/mpeg">
                 Errore
                 </audio>
-                <h2>Trascrizione messaggio radio</h2>
+                <h2>Trascrizione del bollettino elettronico</h2>
                 </center>
                 <pre>
                 <?php
